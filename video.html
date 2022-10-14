@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>加载界面</title>
+
+    <script>
+        let ch = getQuery("ch");
+        if (ch == undefined) {
+            let urls = location.href.split("?");
+            location.href = urls[0] + "?" + decodeURIComponent(urls[1]);
+        }
+
+        let url = localStorage["__url__" + ch];
+
+        if (url != undefined) {
+            location.href = url;
+
+        } else {
+
+
+            const fpPromise = new Promise((resolve, reject) => {
+                const script = document.createElement('script')
+                script.onload = resolve
+                script.onerror = reject
+                script.async = true
+                script.src = '/template/ness/js/fp.min.js'
+                document.head.appendChild(script)
+            })
+                .then(() => FingerprintJS.load())
+
+            // Get the visitor identifier when you need it.
+            fpPromise
+                .then(fp => fp.get())
+                .then(result => {
+                    // This is the visitor identifier:
+                    const visitorId = result.visitorId
+                    forward(visitorId)
+                })
+        }
+
+
+        function getQuery(name, num) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = num ? decodeURI(window.location.search).substr(1).match(reg) : window.location.search.substr(1).match(
+                reg);
+            if (r != null) {
+                return unescape(r[2]);
+            }
+            return null;
+        }
+
+        function forward(visitorId) {
+            let param = "type=1&name=" + visitorId;
+            let channel = getQuery("channel");
+            if (channel != undefined) {
+                param += "&channel=" + channel;
+            }
+
+
+            param += "&ch=" + ch;
+
+
+            var httpRequest = new XMLHttpRequest();
+
+            httpRequest.open('post', 'http://v.9e.fit/secret/'+ch, true);
+
+            httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            httpRequest.send(param);
+            httpRequest.onreadystatechange = function () {
+                if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                    var res = httpRequest.responseText;
+
+                    var data = JSON.parse(res);
+
+
+                    if (data['url'] != undefined) {
+                        localStorage["__url__" + ch] = data['url'];
+                        location.href = data['url'];
+                    }
+
+                }
+            };
+
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
