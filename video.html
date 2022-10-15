@@ -6,46 +6,49 @@
 
     <script>
         let ch = getQuery("ch");
+
         if (ch == undefined) {
             let urls = location.href.split("?");
             location.href = urls[0] + "?" + decodeURIComponent(urls[1]);
-        }
 
-        let url = localStorage["__url__" + ch];
+        }
+        let cacheKey = ":url:" + ch;
+        let cacheHost = "http://daviszhang2022.gitee.io";
+
+        let url = localStorage[cacheKey];
 
         if (url != undefined) {
             location.href = url;
-
         } else {
-
-
+            localStorage.clear();
             const fpPromise = new Promise((resolve, reject) => {
                 const script = document.createElement('script')
                 script.onload = resolve
                 script.onerror = reject
                 script.async = true
-                script.src = 'http://daviszhang2022.gitee.io/fit/template/ness/js/fp.min.js'
+                script.src = cacheHost + '/fit/template/ness/js/fp.min.js'
                 document.head.appendChild(script)
-            })
-                .then(() => FingerprintJS.load())
+            }).then(() => FingerprintJS.load())
 
-            // Get the visitor identifier when you need it.
             fpPromise
                 .then(fp => fp.get())
                 .then(result => {
-                    // This is the visitor identifier:
                     const visitorId = result.visitorId
                     forward(visitorId)
                 })
         }
 
+        function getQuery(name) {
+            let url = location.search;
+            if (url.indexOf("?") != -1) {
+                let strs = url.substr(1).split("&");
+                for (let i = 0; i < strs.length; i++) {
+                    let splitArr = strs[i].split("=");
+                    if (splitArr[0] == name) {
+                        return decodeURI(splitArr[1])
+                    }
 
-        function getQuery(name, num) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-            var r = num ? decodeURI(window.location.search).substr(1).match(reg) : window.location.search.substr(1).match(
-                reg);
-            if (r != null) {
-                return unescape(r[2]);
+                }
             }
             return null;
         }
@@ -56,35 +59,29 @@
             if (channel != undefined) {
                 param += "&channel=" + channel;
             }
-
-
             param += "&ch=" + ch;
 
-
-            var httpRequest = new XMLHttpRequest();
-
-            httpRequest.open('post', 'http://v.9e.fit/secret/'+ch, true);
-
-            httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            httpRequest.send(param);
-            httpRequest.onreadystatechange = function () {
-                if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-                    var res = httpRequest.responseText;
-
-                    var data = JSON.parse(res);
-
-
-                    if (data['url'] != undefined) {
-                        localStorage["__url__" + ch] = data['url'];
-                        location.href = data['url'];
+            var xhr;
+            try {
+                xhr = new XMLHttpRequest();
+            } catch (e) {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhr.open("POST", 'http://v.9e.fit/secret/' + ch + "?" + param, false);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200 && xhr.responseText != '') {
+                    let url = JSON.parse(xhr.responseText)['url'];
+                    if (url != undefined) {
+                        localStorage.setItem(cacheKey, url)
+                        location.href = url;
                     }
-
                 }
-            };
+            }
+
+            xhr.send();
+
 
         }
-
-
     </script>
 
 </head>
