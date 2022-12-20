@@ -1,6 +1,6 @@
 {
   "name": "gfit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "用作表述",
   "main": "index.js",
   "scripts": {
