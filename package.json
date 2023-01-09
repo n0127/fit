@@ -1,8 +1,8 @@
 {
   "name": "gfit",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": false,
-  "description": "用作表述",
+  "description": "gfit用作浏览器的帮助",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
