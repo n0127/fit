@@ -4,13 +4,13 @@
 <br/>
 
 <p>🖖  .gfit用作浏览器的帮助 </p>
-
+[package.json](package.json)
 <p> ⭐️ 如果帮助你了请添加小星星</p>
 <br/>
 
 
 ### Supported languages
-- Javascript
+- Javascript[package.json](package.json)
 
 ### Methods
 - 🍐 `getValue`
