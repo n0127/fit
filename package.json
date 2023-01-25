@@ -1,6 +1,6 @@
 {
   "name": "gfit",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "private": false,
   "description": "gfit用作浏览器的帮助",
   "main": "index.js",
