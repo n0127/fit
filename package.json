@@ -1,6 +1,6 @@
 {
   "name": "9fit",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "description": "9fit用作浏览器的帮助",
   "main": "index.js",
