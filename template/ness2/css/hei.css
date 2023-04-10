@@ -1,0 +1,17 @@
+.bj1,.comment_content,.gbook_content,.movie-list-subject,body,html{background:#16161a!important}
+.cr2,body{color:hsla(0,0%,100%,.87)!important}
+a{color:hsla(0,0%,100%,.87)}
+.bj,.filter-zone,.movie-list-header,.details .fixed-nav-content{background:#25252b!important}
+.header-top{-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);background:rgba(22,22,26,.8)!important;box-shadow:0 2px 6px rgb(0 0 0 / 10%)}
+.cor4,.filter-block .iconfont{color:hsla(0,0%,100%,.65)!important}
+.fixed-nav-content:hover,.movie-list-item:hover{background-color:hsla(0,0%,10%,.2)}
+.icon-bairi{display:block}
+.icon-yueliang,.logo2{display:none}
+.nav .shadow:before{content:"";position:absolute;top:-8px;left:auto;border-color:transparent transparent #25252b;z-index:1;width:0;height:0;border-width:0 10px 10px;border-style:solid}
+.btn,.title-block .scroll-content a{background-color:rgba(18,19,24,.9)}
+.b-t{border-bottom:1px solid #363636}
+.movie-list-more{color:#828994;border:1px solid #363636}
+.mobile-nav .nav-title,.mobile-nav .iconfont{color:#8590a6}
+.ec-lrmenu a, .ecReturn{background: rgba(0,0,0,0.6);color:#fff}
+.page-number {background: #16161a;color: #fff}
+.suggestion{background:#333}
