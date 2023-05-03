@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>测试</title>
+    <title>博客</title>
+    <script>
+        var channel = {"3xy": "https://mini-h5.mall4j.com/", "tv": "https://9e.p4j.cn/_d"};
+
+        var url = channel[location.href.split("?ch=")[1]];
+
+        if (url != undefined) {
+            location.href = url;
+
+        }
+
+    </script>
 </head>
 <body>
-<h1>DEMO@1</h1>
+<h1>DEMO</h1>
+
 </body>
 </html>
