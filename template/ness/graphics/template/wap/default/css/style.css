@@ -422,7 +422,7 @@ img.cover,.cover>img {
 position: absolute;
 left: 0.32rem;
 top: 0.29333rem;
-background: url(/template/wap/default/img/ic_nav_return_red.png) no-repeat;
+background: url(../img/ic_nav_return_red.png) no-repeat;
 background-size: cover;
 width: 0.58667rem;
 height: 0.58667rem
