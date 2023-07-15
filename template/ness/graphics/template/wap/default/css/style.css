@@ -1130,8 +1130,6 @@ a.buy-ticket {
 	height:6.66667rem;
 	position:relative;
 	overflow:hidden
-}
-.banner .banner-bg {
 	background:url("../img/bg_banner.png") no-repeat left bottom;
 	height:.66667rem;
 	background-size:cover;
