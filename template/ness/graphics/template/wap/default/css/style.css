@@ -359,6 +359,8 @@ img.cover,.cover>img {
 	font-size:54px
 }
 .header .logo {
+	width:1.90667rem;
+	height:.78667rem;
 	float:left;
 	margin-top:.13333rem;
 	margin-left:.32rem;
@@ -1128,6 +1130,8 @@ a.buy-ticket {
 	height:6.66667rem;
 	position:relative;
 	overflow:hidden
+}
+.banner .h {
 	background:url("../img/bg_banner.png") no-repeat left bottom;
 	height:.66667rem;
 	background-size:cover;
