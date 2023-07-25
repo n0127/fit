@@ -1,6 +1,6 @@
 {
   "name": "p4j",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "p4j用作浏览器的帮助",
   "main": "index.js",
