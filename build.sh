@@ -11,7 +11,7 @@ git branch -r | grep -v 'main' | sed 's/origin\///' | xargs -I {} git push origi
 git add . 
 git commit -m 'd'
 version=`grep -o '"version": "[^"]*' | grep -o '[^"]*$'`
-git push
+git push origin main
 git checkout $version
 git add . 
 git commit -m 'd'
