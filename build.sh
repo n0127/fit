@@ -10,7 +10,7 @@ git branch | grep -v 'main' | xargs git branch -D
 git branch -r | grep -v 'main' | sed 's/origin\///' | xargs -I {} git push origin --delete {}
 git add . 
 git commit -m 'd'
-version=`grep -o '"version": "[^"]*' | grep -o '[^"]*$'`
+version=`cat package.json|grep -o '"version": "[^"]*' | grep -o '[^"]*$'`
 echo $version
 git push origin main
 git checkout $version
