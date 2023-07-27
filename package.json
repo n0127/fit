@@ -1,8 +1,8 @@
 {
-  "name": "p4j",
-  "version": "1.0.1",
+  "name": "9fit",
+  "version": "2.1.2",
   "private": false,
-  "description": "p4j用作浏览器的帮助",
+  "description": "9fit用作浏览器的帮助",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
